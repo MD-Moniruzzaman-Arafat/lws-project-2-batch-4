@@ -1,4 +1,5 @@
 import './App.css';
+import Card from './components/Card/Card';
 import Form from './components/Form/Form';
 import Header from './components/Header/Header';
 import Search from './components/Search/Search';
@@ -18,6 +19,17 @@ function App() {
               <Sort />
             </div>
           </section>
+          {/* password card grid */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
         </div>
       </div>
     </>
