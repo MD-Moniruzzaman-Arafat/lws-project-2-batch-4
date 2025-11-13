@@ -1,4 +1,30 @@
+import { useState } from 'react';
+
 export default function Header() {
+  const getGreeting = () => {
+    const date = new Date();
+    const hour = date.getHours();
+
+    if (hour >= 5 && hour < 12) {
+      return 'Good Morning 🌅';
+    } else if (hour >= 12 && hour < 17) {
+      return 'Good Afternoon ☀️';
+    } else if (hour >= 17 && hour < 21) {
+      return 'Good Evening 🌇';
+    } else {
+      return 'Good Night 🌙';
+    }
+  };
+
+  const gateDate = () => {
+    const date = new Date();
+    const options = { weekday: 'long', month: 'short', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate;
+  };
+
+  const [message] = useState(getGreeting);
+  const [dateInfo] = useState(gateDate);
   return (
     <>
       <header className="border-b border-neutral-800 bg-gradient-to-b from-neutral-950 via-neutral-900/80 to-transparent">
@@ -9,11 +35,11 @@ export default function Header() {
             </p>
             <div className="flex flex-col gap-3 md:flex-row md:items-center">
               <h1 className="text-4xl font-semibold tracking-tight">
-                Good Morning, World!
+                {message}, World!
               </h1>
               <span className="inline-flex items-center gap-2 rounded-full border border-neutral-800/80 bg-neutral-900/70 px-4 py-1 text-xs font-medium text-neutral-300">
                 <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
-                Monday, Nov 10
+                {dateInfo}
               </span>
             </div>
             <p className="text-sm text-neutral-400 max-w-2xl">
