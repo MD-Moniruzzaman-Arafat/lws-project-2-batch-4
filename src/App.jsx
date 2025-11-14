@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Card from './components/Card/Card';
 import Footer from './components/Footer/Footer';
@@ -7,10 +8,12 @@ import Search from './components/Search/Search';
 import Sort from './components/Sort/Sort';
 
 function App() {
+  const [items, setItems] = useState([]);
+  console.log(items);
   return (
     <>
       <Header />
-      <Form />
+      <Form items={items} setItems={setItems} />
       <main className="p-8">
         <div className="max-w-7xl mx-auto space-y-10 px-4">
           {/* <!-- Search, Sort, and Filter Buttons --> */}

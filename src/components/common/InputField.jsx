@@ -1,4 +1,10 @@
-export default function InputField({ name, type, text }) {
+export default function InputField({
+  name,
+  type,
+  text,
+  formData,
+  handleChange,
+}) {
   return (
     <>
       <label className="flex flex-col gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 text-sm transition focus-within:border-blue-500 focus-within:bg-neutral-900 focus-within:shadow-lg focus-within:shadow-blue-500/10">
@@ -6,6 +12,9 @@ export default function InputField({ name, type, text }) {
           {name}
         </span>
         <input
+          value={formData}
+          onChange={handleChange}
+          name={name}
           type={type}
           placeholder="Enter username"
           className="w-full bg-transparent text-base text-white placeholder:text-neutral-500 focus:outline-none"
