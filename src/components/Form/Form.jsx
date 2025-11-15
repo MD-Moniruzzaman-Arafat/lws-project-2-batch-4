@@ -13,6 +13,7 @@ export default function Form({ items, setItems }) {
     userName: '',
     passWord: '',
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,6 +21,7 @@ export default function Form({ items, setItems }) {
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +34,9 @@ export default function Form({ items, setItems }) {
       isValidUrl(formData.url) &&
       formData.passWord.length >= 6
     ) {
-      setItems([...items, formData]);
+      if (!items.find((item) => item.url === formData.url)) {
+        setItems([...items, formData]);
+      }
     }
     setFormData({
       url: '',
@@ -42,6 +46,7 @@ export default function Form({ items, setItems }) {
       passWord: '',
     });
   };
+
   const resetBtn = () => {
     setFormData({
       url: '',

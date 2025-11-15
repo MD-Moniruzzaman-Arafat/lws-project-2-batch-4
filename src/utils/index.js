@@ -14,4 +14,24 @@ function isValidUrl(value) {
   }
 }
 
-export { isValidUrl };
+function getDomainName(url) {
+  try {
+    if (!url.startsWith('http')) {
+      url = 'https://' + url;
+    }
+
+    const hostname = new URL(url).hostname;
+
+    const parts = hostname.split('.');
+
+    if (parts.length >= 2) {
+      return parts[parts.length - 2];
+    }
+
+    return hostname;
+  } catch {
+    return null;
+  }
+}
+
+export { getDomainName, isValidUrl };

@@ -25,14 +25,9 @@ function App() {
           </section>
           {/* password card grid */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {items.map((item) => (
+              <Card key={item.url} item={item} />
+            ))}
           </div>
         </div>
       </main>
