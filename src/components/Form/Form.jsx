@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { isValidUrl } from '../../utils';
 import InputField from '../common/InputField';
 import Category from './Category';
 import ColorPicker from './ColorPicker';
@@ -21,8 +22,18 @@ export default function Form({ items, setItems }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-    setItems([...items, formData]);
+
+    if (
+      formData.url !== '' &&
+      formData.color !== '' &&
+      formData.category !== '' &&
+      formData.userName !== '' &&
+      formData.passWord !== '' &&
+      isValidUrl(formData.url) &&
+      formData.passWord.length >= 6
+    ) {
+      setItems([...items, formData]);
+    }
     setFormData({
       url: '',
       color: '',

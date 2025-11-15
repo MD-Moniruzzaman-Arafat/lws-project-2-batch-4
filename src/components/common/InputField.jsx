@@ -16,7 +16,7 @@ export default function InputField({
           onChange={handleChange}
           name={name}
           type={type}
-          placeholder="Enter username"
+          placeholder={`Enter ${name}`}
           className="w-full bg-transparent text-base text-white placeholder:text-neutral-500 focus:outline-none"
         />
         <span className="text-xs text-neutral-500">{text}</span>
