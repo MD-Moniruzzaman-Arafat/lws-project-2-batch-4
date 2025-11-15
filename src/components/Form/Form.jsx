@@ -42,6 +42,15 @@ export default function Form({ items, setItems }) {
       passWord: '',
     });
   };
+  const resetBtn = () => {
+    setFormData({
+      url: '',
+      color: '',
+      category: '',
+      userName: '',
+      passWord: '',
+    });
+  };
   return (
     <>
       <div className="max-w-7xl mx-auto mt-8 px-4">
@@ -104,6 +113,7 @@ export default function Form({ items, setItems }) {
             </div>
             <div className="flex flex-1 justify-end gap-3">
               <button
+                onClick={resetBtn}
                 type="reset"
                 className="w-full rounded-full border border-neutral-700 px-6 py-3 text-sm font-semibold text-neutral-200 transition hover:border-neutral-500 hover:text-white md:w-auto"
               >
