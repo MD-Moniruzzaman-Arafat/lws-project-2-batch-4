@@ -1,4 +1,4 @@
-export default function Search() {
+export default function Search({ search, setSearch }) {
   return (
     <>
       <label className="relative flex-1">
@@ -18,6 +18,8 @@ export default function Search() {
           </svg>
         </span>
         <input
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
           type="text"
           placeholder="Search saved credentials"
           className="w-full rounded-2xl border border-neutral-800 bg-neutral-950/60 py-3 pl-11 pr-4 text-sm text-white placeholder:text-neutral-500 transition focus:border-blue-500 focus:bg-neutral-950 focus:outline-none"
