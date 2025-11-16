@@ -1,4 +1,36 @@
-export default function Sort() {
+export default function Sort({ items, setItems }) {
+  const handleChange = (e) => {
+    const { value } = e.target;
+
+    if (value === 'Ascending_Order_By_Date') {
+      const sortedItems = [...items].sort(
+        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      );
+      setItems(sortedItems);
+    }
+
+    if (value === 'Descending_Order_By_Date') {
+      const sortedItems = [...items].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      setItems(sortedItems);
+    }
+
+    if (value === 'Ascending_Order_By_Name') {
+      const sortedItems = [...items].sort((a, b) =>
+        a.userName.toLowerCase().localeCompare(b.userName.toLowerCase())
+      );
+      setItems(sortedItems);
+    }
+
+    if (value === 'Descending_Order_By_Name') {
+      const sortedItems = [...items].sort((a, b) =>
+        b.userName.toLowerCase().localeCompare(a.userName.toLowerCase())
+      );
+      setItems(sortedItems);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-wrap gap-2">
@@ -16,7 +48,39 @@ export default function Sort() {
               d="M3 4h18l-8 8v6l-4 4v-8z"
             ></path>
           </svg>
-          Sort by
+
+          <select
+            onChange={handleChange}
+            name="category"
+            required
+            className="w-20 bg-transparent text-sm text-white outline-none"
+          >
+            <option className="bg-neutral-900 text-white">Sort by</option>
+            <option
+              value="Ascending_Order_By_Date"
+              className="bg-neutral-900 text-white"
+            >
+              Asc-Date
+            </option>
+            <option
+              value="Descending_Order_By_Date"
+              className="bg-neutral-900 text-white"
+            >
+              Des-Date
+            </option>
+            <option
+              value="Ascending_Order_By_Name"
+              className="bg-neutral-900 text-white"
+            >
+              Asc-Name
+            </option>
+            <option
+              value="Descending_Order_By_Name"
+              className="bg-neutral-900 text-white"
+            >
+              Des-Name
+            </option>
+          </select>
         </button>
       </div>
     </>

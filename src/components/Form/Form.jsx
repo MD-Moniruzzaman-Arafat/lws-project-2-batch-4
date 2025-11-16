@@ -12,6 +12,7 @@ export default function Form({ items, setItems }) {
     category: '',
     userName: '',
     passWord: '',
+    createdAt: '',
   });
 
   const handleChange = (e) => {
@@ -34,9 +35,20 @@ export default function Form({ items, setItems }) {
       isValidUrl(formData.url) &&
       formData.passWord.length >= 6
     ) {
-      if (!items.find((item) => item.url === formData.url)) {
-        setItems([...items, formData]);
-      }
+      // if (!items.find((item) => item.url === formData.url)) {
+      //   const newItem = {
+      //     ...formData,
+      //     createdAt: new Date().toISOString(),
+      //   };
+
+      //   setItems((prev) => [...prev, newItem]);
+      // }
+      const newItem = {
+        ...formData,
+        createdAt: new Date().toISOString(),
+      };
+
+      setItems((prev) => [...prev, newItem]);
     }
     setFormData({
       url: '',
@@ -44,6 +56,7 @@ export default function Form({ items, setItems }) {
       category: '',
       userName: '',
       passWord: '',
+      createdAt: '',
     });
   };
 
@@ -54,6 +67,7 @@ export default function Form({ items, setItems }) {
       category: '',
       userName: '',
       passWord: '',
+      createdAt: '',
     });
   };
   return (

@@ -15,7 +15,7 @@ function App() {
       ? items
       : items.filter(
           (item) =>
-            item?.name?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.userName?.toLowerCase().includes(search.toLowerCase()) ||
             item?.url?.toLowerCase().includes(search.toLowerCase())
         );
   console.log(data);
@@ -29,17 +29,22 @@ function App() {
           <section className="rounded-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900/80 to-neutral-900/40 p-6 shadow-2xl shadow-black/40 backdrop-blur">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <Search search={search} setSearch={setSearch} />
-              <Sort />
+              <Sort items={items} setItems={setItems} />
             </div>
           </section>
           {/* password card grid */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {data.length !== 0 ? (
-              data.map((item) => <Card key={item.url} item={item} />)
-            ) : (
-              <p className="text-center">Not Found</p>
-            )}
-          </div>
+
+          {data.length !== 0 ? (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {data.map((item, id) => (
+                <Card key={id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center flex container justify-center items-center">
+              Not Found
+            </p>
+          )}
         </div>
       </main>
       <Footer />
