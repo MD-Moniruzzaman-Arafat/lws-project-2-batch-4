@@ -2,18 +2,6 @@
 
 A modern, secure password manager built with React and Vite. This application allows users to securely store, organize, and manage their passwords across different websites and services.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
-- [Usage](#usage)
-- [Components](#components)
-- [Available Scripts](#available-scripts)
-- [Development Guide](#development-guide)
-
 ## 🎯 Overview
 
 The Password Manager Application is a web-based solution for managing passwords securely. Users can add, search, organize, and manage passwords categorized by website or service. The application features a clean, modern UI with a dark theme and provides an intuitive interface for password management.
